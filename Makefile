@@ -14,6 +14,10 @@ SRC	=	src/my_strlen.c\
 		src/my_convert_to_hexa.c\
 		src/my_strcmp_advanced.c\
 		src/my_strtod.c\
+		src/my_str_to_word_array_adv.c\
+		src/my_str_to_word_array_adv_two.c\
+		src/my_strncpy.c
+
 
 OBJ	=	$(SRC:.c=.o)
 
