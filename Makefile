@@ -16,8 +16,10 @@ SRC	=	src/my_strlen.c\
 		src/my_strtod.c\
 		src/my_str_to_word_array_adv.c\
 		src/my_str_to_word_array_adv_two.c\
-		src/my_strncpy.c
-
+		src/my_strncpy.c\
+		src/linked_list.c\
+		src/linked_list_bis.c\
+		src/my_putstr.c\
 
 OBJ	=	$(SRC:.c=.o)
 
