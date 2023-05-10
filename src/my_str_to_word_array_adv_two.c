@@ -6,6 +6,8 @@
 */
 #include "my_str_to_word_array.h"
 #include "my_strncpy.h"
+#include <stdlib.h>
+
 int count_words(const char* str, const char* delimiters)
 {
     int count = 0;
