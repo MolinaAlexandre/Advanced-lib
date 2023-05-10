@@ -20,6 +20,8 @@ SRC	=	src/my_strlen.c\
 		src/linked_list.c\
 		src/linked_list_bis.c\
 		src/my_putstr.c\
+		src/my_ctype1.c\
+		src/my_ctype2.c\
 
 OBJ	=	$(SRC:.c=.o)
 
