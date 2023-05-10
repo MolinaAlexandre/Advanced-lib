@@ -22,6 +22,7 @@ SRC	=	src/my_strlen.c\
 		src/my_putstr.c\
 		src/my_ctype1.c\
 		src/my_ctype2.c\
+		src/is_only_int.c\
 
 OBJ	=	$(SRC:.c=.o)
 
