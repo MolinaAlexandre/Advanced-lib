@@ -6,33 +6,47 @@
 */
 #include "my_strtod.h"
 
-int is_number(const char str)
+int add_intpart(int intpart, char c, int *sign, int *itteration)
 {
-    if (str >= '0' && str <= '9')
-        return 1;
-    return 0;
+    if ((*itteration) == 0 && my_issign(c) != 0){
+        *itteration = 1;
+        *sign = my_issign(c);
+        return intpart;
+    }
+    *itteration = 1;
+    if ((*sign) == 0){
+        (*sign) = 1;
+    }
+    if (my_issign(c) != 0 && (*itteration) == 1){
+        *itteration = -1;
+        return intpart;
+    } else if (*itteration != -1) {
+        intpart = (intpart * 10) + (c - '0');
+        return intpart;
+    }
+
 }
 
-int my_strtod(const char *str, char *charpart)
+int my_strtod(const char *restrict nptr, char **restrict endptr)
 {
-    char numpart[100];
-    int j = 0; int k = 0;
-    int isletter = 0;
+    char *charpart = malloc(sizeof(char) * (my_strlen(nptr) + 1));
+    int intpart = 0; int it = 0; int itt = 0;
     int sign = 0;
-    int it = 0;
-    for (int i = 0; i < my_strlen(str); i++){
-        if (str[i] == '-' && is_number(str[i + 1]) == 1 && it != 1){
-            sign = 1;
-            it = 1;
-        }
-        if (((is_number(str[i]) == 1) && isletter != 1) || sign == 1){
-            numpart[j] = str[i];
-            j++;
-            sign = 0;
+    int a = 0;
+
+    for (int i = 0; i < my_strlen(nptr); i++){
+        if ((my_isnum_sign(nptr[i]) && itt != -1) && it == 0){
+            intpart = add_intpart(intpart, nptr[i], &sign, &itt);
         } else {
-            charpart[k] = str[i];
-            isletter = 1; k++;
+            it = 1;
+            charpart[a] = nptr[i];
+            a++;
         }
     }
-    return my_atoi(numpart);
+    charpart[a] = '\0';
+    *endptr = malloc(sizeof(char) * (my_strlen(charpart) + 1));
+    my_strncpy(*endptr, charpart, my_strlen(charpart));
+    (*endptr)[my_strlen(charpart)] = '\0';
+    free(charpart);
+    return (intpart * sign);
 }
