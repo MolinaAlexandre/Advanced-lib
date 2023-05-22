@@ -23,6 +23,7 @@ SRC	=	src/my_strlen.c\
 		src/my_ctype1.c\
 		src/my_ctype2.c\
 		src/is_only_int.c\
+		src/my_calloc.c
 
 OBJ	=	$(SRC:.c=.o)
 
