@@ -5,10 +5,7 @@
 ** my_strstr
 */
 
-int my_strlen(char const *str);
-int my_strncmp(const char *s1, const char *s2, size_t n);
-
-#include <stddef.h>
+#include "my_strstr.h"
 
 char *my_strstr(const char *haystack, const char *needle)
 {
